@@ -2,7 +2,7 @@
 
 from setuptools import setup
 
-PACKAGE = "djangoutils"
+PACKAGE = "dutils"
 NAME = "Django Utils"
 DESCRIPTION = "Django common utils"
 AUTHOR = "runforever"
@@ -20,7 +20,7 @@ setup(
     license="BSD",
     url=URL,
     packages=[
-        'djangoutils',
+        'dutils',
     ],
     install_requires=[
         'pymongo',
