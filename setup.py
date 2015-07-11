@@ -12,7 +12,7 @@ VERSION = '0.1'
 
 
 setup(
-    Name=NAME,
+    name=NAME,
     version=VERSION,
     description=DESCRIPTION,
     author=AUTHOR,
