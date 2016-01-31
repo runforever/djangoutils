@@ -19,11 +19,8 @@ setup(
     author_email=AUTHOR_EMAIL,
     license="BSD",
     url=URL,
-    packages=[
-        'dutils',
-    ],
+    packages=[PACKAGE],
     install_requires=[
-        'pymongo',
         'django',
     ],
     zip_safe=False,

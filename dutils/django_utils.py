@@ -2,12 +2,9 @@
 
 import re
 import json
-import bson
 import datetime
 import os
 import uuid
-
-from bson.json_util import default as bson_encoder
 
 from django.http import HttpResponse
 from django.contrib.auth.decorators import user_passes_test
@@ -28,23 +25,7 @@ after7day = lambda: get_today() + datetime.timedelta(days=8)
 get_yesterday = lambda: get_today() + datetime.timedelta(days=-1)
 
 
-class DateTimeJSONEncoder(json.JSONEncoder):
-    '''
-    change datetime to %Y-%m
-    datetime.datetime(2014, 1, 11) -> 2014-01
-    '''
-
-    def default(self, obj):
-        if isinstance(obj, datetime.datetime):
-            return obj.strftime('%Y-%m')
-        else:
-            return super(DateTimeJSONEncoder, self).default(obj)
-
-
 def JsonResponse(ret, *args, **kwargs):
-    if 'default' not in kwargs:
-        kwargs.update({'default': bson_encoder})
-
     if 'cls' not in kwargs:
         kwargs.update({'cls': DjangoJSONEncoder})
 
@@ -59,14 +40,6 @@ def get_object_or_none(model, **kwargs):
         return model.objects.get(**kwargs)
     except model.DoesNotExist:
         return None
-
-
-def get_oid(str_id):
-    try:
-        oid = bson.ObjectId(str_id)
-        return oid
-    except bson.errors.InvalidId:
-        return ''
 
 
 def get_int(str_num):

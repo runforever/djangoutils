@@ -24,6 +24,8 @@ python setup.py install
 
 常用的工具集
 
+    from dutils import django_utils
+
     # 超级用户装饰器
     require_superuser
 
@@ -53,9 +55,6 @@ python setup.py install
 
     # 获取model的一个实例，如果找不到返回None
     get_object_or_none
-
-    # 转换字符串的mongo_id为ObjectId
-    get_oid
 
     # 获取整数
     get_int
@@ -91,6 +90,7 @@ python setup.py install
 
 常用class base view的mixin
 
+    from dutils import mixin_utils
     # 登陆
     LoginRequiredMixin
 
